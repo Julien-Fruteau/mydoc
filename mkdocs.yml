@@ -1,0 +1,48 @@
+site_name: myDoc
+
+plugins:
+  - tags
+  - search
+
+theme:
+  name: material
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: teal
+      toggle:
+        icon: material/brightness-7 
+        name: Switch to dark mode
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+    # scheme: slate
+
+  features:
+    - navigation.instant
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - toc.integrate
+
+markdown_extensions:
+  - toc:
+      permalink: true
+      toc_depth: 3
+
+extra:
+  version:
+    provider: mike
+  social:
+    - icon: fontawesome/brands/twitter 
+      link: https://twitter.com/jfruteau
+    - icon: fontawesome/brands/github
+      link: https://github.com/Julien-Fruteau
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/julien-fruteau-a4914671/
+
