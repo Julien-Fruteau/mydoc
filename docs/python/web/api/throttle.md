@@ -16,7 +16,7 @@ Usage example of the ```asyncio_throttle``` module that can be useful to overcom
 
 > this example also display a good way to use async http requests by providing asyncio a *task* list
 
-```python
+```py
 import asyncio
 import time
 from asyncio_throttle.throttler import Throttler
@@ -24,8 +24,7 @@ from asyncio_throttle.throttler import Throttler
 
 async def wait_s(i: int, throttler: Throttler):
     async with throttler:
-        # ! make an http request here instead :) !
-        await asyncio.sleep(1)
+        await asyncio.sleep(1) # (1)
         print(f"{time.time()} : {i} done")
 
 async def tasks(throttler: Throttler):
@@ -41,3 +40,5 @@ async def main():
 if __name__ == "__main__":
     asyncio.run(main()) 
 ```
+
+1. :man_raising_hand: make an http request here instead ;)

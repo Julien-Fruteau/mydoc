@@ -15,7 +15,7 @@ Usage example of the ```pytest_mock``` module
 
 ### Mock object method
 
-```python
+```py
 from pytest_mock import MockerFixture
 
 class A:
@@ -39,7 +39,7 @@ def test_foo_no_mock():
 
 - my_package.my_module file :
 
-```python
+```py
 def my_function_to_mock(text: str):
     return text.capitalize()
 
@@ -50,7 +50,7 @@ def function_using_function_to_mock(text: str):
 
 - testing :
 
-```python
+```py
 from pytest_mock import MockerFixture
 from my_package.my_module import function_using_function_to_mock
 
