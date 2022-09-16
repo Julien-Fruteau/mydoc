@@ -1,4 +1,4 @@
-# SQLALCHEMY
+# Sqlalchemy
 
 ## Intro with sqllite
 
