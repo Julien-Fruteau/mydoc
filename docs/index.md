@@ -1,3 +1,3 @@
-# Welcome to my doc
+# Welcome
 
-A placeholder for knowledge and code snippets considered worth saving for future usage.
+myDoc is a placeholder for knowledge and code snippets considered worth saving for future usage.

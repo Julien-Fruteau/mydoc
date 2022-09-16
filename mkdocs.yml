@@ -3,6 +3,7 @@ site_name: myDoc
 plugins:
   - tags
   - search
+  - mkdocs-jupyter
 
 theme:
   name: material
