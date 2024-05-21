@@ -12,7 +12,7 @@ theme:
       scheme: default
       primary: teal
       toggle:
-        icon: material/brightness-7 
+        icon: material/brightness-7
         name: Switch to dark mode
     # Palette toggle for dark mode
     - media: "(prefers-color-scheme: dark)"
@@ -51,10 +51,9 @@ extra:
   version:
     provider: mike
   social:
-    - icon: fontawesome/brands/twitter 
+    - icon: fontawesome/brands/twitter
       link: https://twitter.com/jfruteau
     - icon: fontawesome/brands/github
       link: https://github.com/Julien-Fruteau
     - icon: fontawesome/brands/linkedin
       link: https://www.linkedin.com/in/julien-fruteau-a4914671/
-

@@ -1,4 +1,4 @@
-# Welcome to myDoc
+# Welcome to my docs
 
 A placeholder for knowledge and code snippets considered worth saving for future usage.
 
