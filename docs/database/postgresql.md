@@ -8,11 +8,11 @@ tags:
   - sql
 ---
 
-## admnistration
+## administration
 
 ## union caveats
 
-- multiple union with null as "fieldName" can lead to type mismatch.
+- multiple union with null as "fieldName" can lead to type mismatch. 
 - For instance consider:
 
 ```sql
