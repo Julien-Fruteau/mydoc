@@ -12,7 +12,7 @@ tags:
 
 ## union caveats
 
-- multiple union with null as "fieldName" can lead to type mismatch. 
+- multiple union with null as "fieldName" can lead to type mismatch.
 - For instance consider:
 
 ```sql
@@ -47,13 +47,13 @@ union
 select null::int4 as "A", d as "D" from table2
 ```
 
-## update sequence 
+## update sequence
 
-📖 case you need to update sequence when the following occurs: first create db schema, second import data 
+📖 case you need to update sequence when the following occurs: first create db schema, second import data
 
-🤔 more details ? Because the sequence created stayed at the initial values whereas the PK from data imported increased 
+🤔 more details ? Because the sequence created stayed at the initial values whereas the PK from data imported increased
 
-💡 create a migration script to run after data import 
+💡 create a migration script to run after data import
 
 ```sql
 setval 'sequence_name', (select max(id) + 1 from table_name);
