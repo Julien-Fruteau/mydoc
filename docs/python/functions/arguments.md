@@ -2,7 +2,7 @@
 
 ## How are they passed to function
 
-> All arguments are passed to function by **reference**
+> All arguments are passed to function/methods by **reference**
 
 BUT
 
