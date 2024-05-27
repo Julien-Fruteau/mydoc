@@ -11,10 +11,9 @@ tags:
 
 ## API Request Limit
 
+Usage example of the `asyncio_throttle` module that can be useful to overcome api rate limit
 
-Usage example of the ```asyncio_throttle``` module that can be useful to overcome api rate limit
-
-> this example also display a good way to use async http requests by providing asyncio a *task* list
+> this example also display a good way to use async http requests by providing asyncio a _task_ list
 
 ```py
 import asyncio
@@ -38,7 +37,7 @@ async def main():
 
 
 if __name__ == "__main__":
-    asyncio.run(main()) 
+    asyncio.run(main())
 ```
 
 1. :man_raising_hand: make an http request here instead ;)
