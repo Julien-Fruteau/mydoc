@@ -13,6 +13,10 @@ tags:
 - a helper function in a test file helps reuse code by marking it as a helper so that it is not considered by `go test`
 
 ```go
+package main
+
+import "testing"
+
 func assertOk (t testing.TB, got, want int){
   t.Helper()
 
@@ -34,6 +38,9 @@ func TestFoo(t *testing.T) {
 - run a subtest of a function for clarity
 
 ```go
+package main
+
+import "testing"
 
 func TestFoo(t *testing.T) {
   assertOk:= func(t testing.TB, got, want int){
