@@ -10,7 +10,7 @@ tags:
 
 ## helper
 
-- a helper function in a test file helps reuse code by marking it as a helper so that it is not considered by `go test`
+- a helper function in a test file helps reuse code by marking it as a `helper`so that it is not considered by `go test`
 
 ```go
 package main
