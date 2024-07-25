@@ -46,6 +46,8 @@ markdown_extensions:
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.arithmatex:
+      generic: true
 
 extra:
   version:
@@ -57,3 +59,11 @@ extra:
       link: https://github.com/Julien-Fruteau
     - icon: fontawesome/brands/linkedin
       link: https://www.linkedin.com/in/julien-fruteau-a4914671/
+
+extra_javascript:
+  - javascripts/katex.js
+  - https://unpkg.com/katex@0/dist/katex.min.js
+  - https://unpkg.com/katex@0/dist/contrib/auto-render.min.js
+
+extra_css:
+  - https://unpkg.com/katex@0/dist/katex.min.css
