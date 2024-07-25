@@ -60,5 +60,25 @@ example use case :
 - instead _lienear search_ by jumping square_root of N (length): on the 1st hit, a ball is lost, but we start back from that hi index minus square_root(N)
 
 ```golang
+func two_cristal_balls(breaks []bool) (v int) {
+ jumpAmout := int(math.Sqrt(float64(len(breaks))))
+ i := 0
 
+  // search jumping by N^1/2
+ for ; i < len(breaks); i += jumpAmout {
+  if breaks[i] {
+   break
+  }
+ }
+
+  // then search linearly up to N^1/2 at most
+ i -= jumpAmout
+ for j := 0; j < jumpAmout && i < len(breaks); j++ {
+  if breaks[i] {
+   return i
+  }
+  i++
+ }
+ return -1
+}
 ```
