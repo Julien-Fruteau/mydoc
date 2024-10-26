@@ -7,7 +7,7 @@ tags:
 
 ## Queue highlights
 
-![docs](images/algo/queue.png)
+![queue](../images/algo/queue.png)
 
 ## Implementation
 
