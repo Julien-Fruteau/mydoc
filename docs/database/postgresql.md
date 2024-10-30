@@ -67,12 +67,16 @@ rollback migration
 alter sequence_name restart with 1;
 ```
 
-## Dump locally from remote host with different pg version
+## Dump & Restore
+
+> locally from remote host with different pg version
 
 📖 key points :
 
 - avoid running pg_dump on remote host and exposing filesystem usage at risk, specifically the running database
 - avoid installing on your local host a specific pg cli version
+
+- dump:
 
 ```bash
 DATA=/data
@@ -83,4 +87,16 @@ docker run --rm -it \
     pg_dump --verbose --host=$PG_HOST_FQDN --port=$PG_PORT --username=$PG_USER \
       --format=c --encoding=UTF-8 --no-privileges --no-owner --clean --create \
       --file $DATA/pg_dump.backup -n "public" $PG_DB
+```
+
+- restore:
+
+```bash
+DATA=/data
+docker run --rm -it \
+    --network="host" \
+    -v $(pwd):$DATA \
+    postgres:$PG_TARGET_VERSION \
+    pg_restore --verbose --host=$PG_TARGET_HOST_FQDN --port=$PG_PORT --username=$PG_USER \
+      --format=c  --no-privileges --no-owner --clean --create --dbname $PG_DB $DATA/pg_dump.backup
 ```
