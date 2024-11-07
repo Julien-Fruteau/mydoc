@@ -98,5 +98,7 @@ docker run --rm -it \
     -v $(pwd):$DATA \
     postgres:$PG_TARGET_VERSION \
     pg_restore --verbose --host=$PG_TARGET_HOST_FQDN --port=$PG_PORT --username=$PG_USER \
-      --format=c  --no-privileges --no-owner --clean --create --dbname $PG_DB $DATA/pg_dump.backup
+      --format=c  --no-privileges --no-owner --clean --dbname $PG_DB $DATA/pg_dump.backup
 ```
+
+ℹ️ --create and --clean options are not compatible, either one of them for pg_restore
