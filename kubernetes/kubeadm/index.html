@@ -1,0 +1,2693 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../kube-vip/">
+      
+      
+        <link rel="next" href="../../network/protocol/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.11">
+    
+    
+      
+        <title>kubernetes - myDoc</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.4af4bdda.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://unpkg.com/katex@0/dist/katex.min.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#disclaimer" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="myDoc" class="md-header__button md-logo" aria-label="myDoc" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            myDoc
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              kubernetes
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Welcome to my docs
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../algo/arrays_data_structure/" class="md-tabs__link">
+          
+  
+  
+  Algo
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../containers/platform/" class="md-tabs__link">
+          
+  
+  
+  Containers
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../database/postgresql/" class="md-tabs__link">
+          
+  
+  
+  Database
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../golang/datatypes/maps/" class="md-tabs__link">
+          
+  
+  
+  Golang
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../calico/" class="md-tabs__link">
+          
+  
+  
+  Kubernetes
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../network/protocol/" class="md-tabs__link">
+          
+  
+  
+  Network
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../python/builtin-modules/iterools/" class="md-tabs__link">
+          
+  
+  
+  Python
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="myDoc" class="md-nav__button md-logo" aria-label="myDoc" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    myDoc
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Welcome to my docs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Algo
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Algo
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/arrays_data_structure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    arrays data structure
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/linked_list/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    linked list
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/queue/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    queue
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/recursion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    recursion
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../algo/stack/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    stack
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Containers
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Containers
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../containers/platform/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Platform
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Database
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Database
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../database/postgresql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Postgresql
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Golang
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Golang
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Datatypes
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            Datatypes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../golang/datatypes/maps/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    map
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Pointers
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            Pointers
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../golang/pointers/tldr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    pointers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Testing
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            Testing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../golang/testing/error/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    errors
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../golang/testing/helper/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    helper
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Kubernetes
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Kubernetes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../calico/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    calico
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kube-vip/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    kube-vip
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    kubernetes
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    kubernetes
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#disclaimer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Disclaimer
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#post-os-install" class="md-nav__link">
+    <span class="md-ellipsis">
+      Post OS install
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#network-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Network configuration
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cgroup" class="md-nav__link">
+    <span class="md-ellipsis">
+      CGroup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="CGroup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kubeletconfiguration" class="md-nav__link">
+    <span class="md-ellipsis">
+      KubeletConfiguration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#container-runtime" class="md-nav__link">
+    <span class="md-ellipsis">
+      Container Runtime
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Container Runtime">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#runc" class="md-nav__link">
+    <span class="md-ellipsis">
+      runc
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cni-plugins" class="md-nav__link">
+    <span class="md-ellipsis">
+      CNI plugins
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#containerd-config" class="md-nav__link">
+    <span class="md-ellipsis">
+      containerd config
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#crictl" class="md-nav__link">
+    <span class="md-ellipsis">
+      CRICTL
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kubeadm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kubeadm
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Kubeadm">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prereq" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prereq
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#packages" class="md-nav__link">
+    <span class="md-ellipsis">
+      packages
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#control-plane" class="md-nav__link">
+    <span class="md-ellipsis">
+      control plane
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#kubeadm-init" class="md-nav__link">
+    <span class="md-ellipsis">
+      kubeadm init
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pki-certificates-and-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      PKI certificates and requirements
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PKI certificates and requirements">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#distributing-self-signed-certificates" class="md-nav__link">
+    <span class="md-ellipsis">
+      Distributing Self-Signed Certificates
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nodes-dns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nodes DNS
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#join" class="md-nav__link">
+    <span class="md-ellipsis">
+      Join
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Join">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#worker-node" class="md-nav__link">
+    <span class="md-ellipsis">
+      Worker node
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kube-vip" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kube VIP
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#calico" class="md-nav__link">
+    <span class="md-ellipsis">
+      Calico
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nodes-taint" class="md-nav__link">
+    <span class="md-ellipsis">
+      Nodes taint
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#node-notready" class="md-nav__link">
+    <span class="md-ellipsis">
+      Node NotReady
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Network
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Network
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../network/protocol/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    protocols
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../network/socat/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    socat
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Python
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Python
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_1" id="__nav_8_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Builtin modules
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_1">
+            <span class="md-nav__icon md-icon"></span>
+            Builtin modules
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/builtin-modules/iterools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Itertools
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_2" id="__nav_8_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Database
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_2">
+            <span class="md-nav__icon md-icon"></span>
+            Database
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/database/sqlalchemy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Sqlalchemy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_3" id="__nav_8_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Functions
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_3">
+            <span class="md-nav__icon md-icon"></span>
+            Functions
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/functions/arguments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Function arguments
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_4" id="__nav_8_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Testing
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_4">
+            <span class="md-nav__icon md-icon"></span>
+            Testing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_4_1" id="__nav_8_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Unit
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            Unit
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/testing/unit/pytest/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Pytest
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_5" id="__nav_8_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Web
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_5">
+            <span class="md-nav__icon md-icon"></span>
+            Web
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_8_5_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_5_1" id="__nav_8_5_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Api
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_8_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            Api
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../python/web/api/throttle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Throttle api calls
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  <nav class="md-tags" >
+    
+      
+      
+      
+        <span class="md-tag">arm64</span>
+      
+    
+      
+      
+      
+        <span class="md-tag">bare-metal</span>
+      
+    
+  </nav>
+
+
+
+  <h1>kubernetes</h1>
+
+<!--toc:start-->
+<ul>
+<li><a href="#disclaimer">Disclaimer</a></li>
+<li><a href="#post-os-install">Post OS install</a></li>
+<li><a href="#network-configuration">Network configuration</a></li>
+<li><a href="#cgroup">CGroup</a></li>
+<li><a href="#kubeletconfiguration">KubeletConfiguration</a></li>
+<li><a href="#container-runtime">Container Runtime</a></li>
+<li><a href="#runc">runc</a></li>
+<li><a href="#cni-plugins">CNI plugins</a></li>
+<li><a href="#containerd-config">containerd config</a></li>
+<li><a href="#crictl">CRICTL</a></li>
+<li><a href="#kubeadm">Kubeadm</a></li>
+<li><a href="#prereq">Prereq</a><ul>
+<li><a href="#firewall">Firewall</a></li>
+<li><a href="#swap">Swap</a></li>
+</ul>
+</li>
+<li><a href="#packages">packages</a></li>
+<li><a href="#control-plane">control plane</a></li>
+<li><a href="#kubeadm-init">kubeadm init</a></li>
+<li><a href="#kube-vip">Kube VIP</a></li>
+<li><a href="#calico">Calico</a></li>
+<li><a href="#pki-certificates-and-requirements">PKI certificates and requirements</a></li>
+<li><a href="#distributing-self-signed-certificates">Distributing Self-Signed Certificates</a></li>
+<li><a href="#nodes-dns">Nodes DNS</a></li>
+<li><a href="#join">Join</a></li>
+<li><a href="#worker-node">Worker node</a></li>
+</ul>
+<!--toc:end-->
+
+<h2 id="disclaimer">Disclaimer<a class="headerlink" href="#disclaimer" title="Permanent link">&para;</a></h2>
+<p>Creating a kubernetes cluster on arm64 server using kubeadm may leave
+few resources left for application to run.</p>
+<p>This documentation should mostly be considered as training/tutorial man pages.</p>
+<p><code>k3s</code> kubernetes cluster may be preferred (faster setup and less resources
+used by k8s cluster) if you're willing to spin up a cluster quickly on arm64,
+and deploying application on it.</p>
+<h2 id="post-os-install">Post OS install<a class="headerlink" href="#post-os-install" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sudo<span class="w"> </span>dpkg-configure<span class="w"> </span>locales
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>sudo<span class="w"> </span>hostnamectl<span class="w"> </span>set-hostname<span class="w"> </span>&lt;NODE-FQDN&gt;
+</code></pre></div>
+<blockquote>
+<p><a href="https://v1-30.docs.kubernetes.io/docs/setup/production-environment/container-runtimes/#containerd">docs</a>
+</p>
+</blockquote>
+<h2 id="network-configuration">Network configuration<a class="headerlink" href="#network-configuration" title="Permanent link">&para;</a></h2>
+<p>Enable IPv4 packet forwarding</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># sysctl params required by setup, params persist across reboots</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>cat<span class="w"> </span><span class="s">&lt;&lt;EOF | sudo tee /etc/sysctl.d/k8s.conf</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="s">net.ipv4.ip_forward = 1</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="s">EOF</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="c1"># Apply sysctl params without reboot</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>sudo<span class="w"> </span>sysctl<span class="w"> </span>--system
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="c1"># Verify that net.ipv4.ip_forward is set to 1 with:</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>sysctl<span class="w"> </span>net.ipv4.ip_forward
+</code></pre></div>
+<h2 id="cgroup">CGroup<a class="headerlink" href="#cgroup" title="Permanent link">&para;</a></h2>
+<p>Control Groups are used to constrain resources allocated to processes
+Used by kubelet and container runtime to <strong>enforce</strong> resource management</p>
+<p>~cgroupfs driver~ -&gt; systemd cgroup driver, as it is recommended when
+systemd is the ini system</p>
+<h3 id="kubeletconfiguration">KubeletConfiguration<a class="headerlink" href="#kubeletconfiguration" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>This need to be added to kubelet configuration in kubeadm init conf file. Check this <a href="#kubeadm-init">section</a></p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubelet.config.k8s.io/v1beta1</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">KubeletConfiguration</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nt">cgroupDriver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">systemd</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="nt">failSwapOn</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="nt">memorySwap</span><span class="p">:</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">  </span><span class="nt">swapBehavior</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LimitedSwap</span>
+</code></pre></div>
+<p>cgroup may not be active by default on arm64 os</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>sudo<span class="w"> </span>vim<span class="w"> </span>/boot/firmware/cmdline.txt
+</code></pre></div>
+<blockquote>
+<p>⚠️  Do NOT add line breaks ! This file should remain a single line ⚠️</p>
+</blockquote>
+<p>Add at the end of the line the following:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>cgroup_enable=cpuset cgroup_enable=memory cgroup_memory=1 cgroup_enable=hugetlb
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>sudo<span class="w"> </span>reboot
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="c1"># check</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>cat<span class="w"> </span>/proc/mounts<span class="w"> </span><span class="p">|</span>grep<span class="w"> </span>cgroup
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1"># cgroup2 /sys/fs/cgroup cgroup2 rw,nosuid,nodev,noexec,relatime 0 0</span>
+</code></pre></div>
+<h2 id="container-runtime">Container Runtime<a class="headerlink" href="#container-runtime" title="Permanent link">&para;</a></h2>
+<p>📢 Using systemd for cgroup driver enforce using systemd for the CRI</p>
+<blockquote>
+<p><a href="https://github.com/containerd/containerd/blob/main/docs/getting-started.md">docs</a></p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># pick up a containerd-&lt;VERSION&gt;-&lt;OS&gt;-&lt;ARCH&gt;.tar.gz</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>wget<span class="w"> </span>https://github.com/containerd/containerd/releases/download/v2.0.2/containerd-2.0.2-linux-arm64.tar.gz
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>wget<span class="w"> </span>https://github.com/containerd/containerd/releases/download/v2.0.2/containerd-2.0.2-linux-arm64.tar.gz.sha256sum
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="c1"># check</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>sha256sum<span class="w"> </span>-c<span class="w"> </span>containerd-2.0.2-linux-arm64.tar.gz.sha256sum
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="c1"># containerd-2.0.2-linux-arm64.tar.gz: OK</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>sudo<span class="w"> </span>tar<span class="w"> </span>Cxzvf<span class="w"> </span>/usr/local<span class="w"> </span>containerd-2.0.2-linux-arm64.tar.gz
+</code></pre></div>
+<p>to start containerd via systemd, you should also download the containerd.service</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>wget<span class="w"> </span>https://raw.githubusercontent.com/containerd/containerd/main/containerd.service
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/usr/local/lib/systemd/system/
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>sudo<span class="w"> </span>mv<span class="w"> </span>containerd.service<span class="w"> </span>/usr/local/lib/systemd/system/
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>daemon-reload
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>--now<span class="w"> </span>containerd
+</code></pre></div>
+<h3 id="runc">runc<a class="headerlink" href="#runc" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p><a href="https://github.com/opencontainers/runc/releases">docs</a></p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># pick a release from https://github.com/opencontainers/runc/releases</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>wget<span class="w"> </span>https://github.com/opencontainers/runc/releases/download/v1.2.4/runc.arm64
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>sudo<span class="w"> </span>install<span class="w"> </span>-m<span class="w"> </span><span class="m">755</span><span class="w"> </span>runc.arm64<span class="w"> </span>/usr/local/sbin/runc
+</code></pre></div>
+<h3 id="cni-plugins">CNI plugins<a class="headerlink" href="#cni-plugins" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p><a href="https://github.com/containernetworking/plugins/releases">docs</a></p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># pick a release from  https://github.com/containernetworking/plugins/releases</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>wget<span class="w"> </span>https://github.com/containernetworking/plugins/releases/download/v1.6.2/cni-plugins-linux-arm64-v1.6.2.tgz
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="c1"># sha256sum</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>wget<span class="w"> </span>https://github.com/containernetworking/plugins/releases/download/v1.6.2/cni-plugins-linux-arm64-v1.6.2.tgz.sha256
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>sha256sum<span class="w"> </span>-c<span class="w"> </span>cni-plugins-linux-arm64-v1.6.2.tgz.sha256
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="c1"># cni-plugins-linux-arm64-v1.6.2.tgz: OK</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/opt/cni/bin
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>sudo<span class="w"> </span>tar<span class="w"> </span>Cxzvf<span class="w"> </span>/opt/cni/bin<span class="w"> </span>cni-plugins-linux-arm64-v1.6.2.tgz
+</code></pre></div>
+<h3 id="containerd-config">containerd config<a class="headerlink" href="#containerd-config" title="Permanent link">&para;</a></h3>
+<p>Save the default configuration in <code>/etc/containerd/config.toml</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>sudo<span class="w"> </span>mkdir<span class="w"> </span>/etc/containerd
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>containerd<span class="w"> </span>config<span class="w"> </span>default<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/containerd/config.toml
+</code></pre></div>
+<p>add the following to ensure the CRI is handled by systemd</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="k">[plugins.</span><span class="s2">&quot;io.containerd.grpc.v1.cri&quot;</span><span class="k">.containerd.runtimes.runc]</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">  </span><span class="p">...</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">  </span><span class="k">[plugins.</span><span class="s2">&quot;io.containerd.grpc.v1.cri&quot;</span><span class="k">.containerd.runtimes.runc.options]</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="w">    </span><span class="n">SystemdCgroup</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>containerd.service
+</code></pre></div>
+<h2 id="crictl">CRICTL<a class="headerlink" href="#crictl" title="Permanent link">&para;</a></h2>
+<p>CLI and validation tools for Kubelet Container Runtime Interface (CRI) .</p>
+<blockquote>
+<p><a href="https://github.com/kubernetes-sigs/cri-tools/releases">install docs</a></p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nv">VERSION</span><span class="o">=</span><span class="s2">&quot;v1.32.0&quot;</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>wget<span class="w"> </span>https://github.com/kubernetes-sigs/cri-tools/releases/download/<span class="nv">$VERSION</span>/crictl-<span class="nv">$VERSION</span>-linux-arm64.tar.gz
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>sudo<span class="w"> </span>tar<span class="w"> </span>zxvf<span class="w"> </span>crictl-<span class="nv">$VERSION</span>-linux-arm64.tar.gz<span class="w"> </span>-C<span class="w"> </span>/usr/local/bin
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>rm<span class="w"> </span>-f<span class="w"> </span>crictl-<span class="nv">$VERSION</span>-linux-arm64.tar.gz
+</code></pre></div>
+<p>file : <code>/etc/crictl.yaml</code></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nt">runtime-endpoint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unix:///var/run/containerd/containerd.sock</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="nt">image-endpoint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unix:///var/run/containerd/containerd.sock</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="nt">timeout</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="nt">debug</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="nt">pull-image-on-create</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+</code></pre></div>
+<blockquote>
+<p><a href="https://kubernetes.io/docs/tasks/debug/debug-cluster/crictl/">usage docs</a></p>
+</blockquote>
+<h2 id="kubeadm">Kubeadm<a class="headerlink" href="#kubeadm" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p><a href="https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/">docs</a></p>
+</blockquote>
+<h3 id="prereq">Prereq<a class="headerlink" href="#prereq" title="Permanent link">&para;</a></h3>
+<h4 id="firewall">Firewall<a class="headerlink" href="#firewall" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>netcat-openbsd<span class="w"> </span>dnsutils
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="c1"># listen on port</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>nc<span class="w"> </span>-l<span class="w"> </span><span class="m">6443</span><span class="w"> </span><span class="p">&amp;</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="c1"># check port opened</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>nc<span class="w"> </span>-zv<span class="w"> </span><span class="m">127</span>.0.0.1<span class="w"> </span><span class="m">6443</span>
+</code></pre></div>
+<p>Full list of ports to be opened : <a href="https://kubernetes.io/fr/docs/setup/production-environment/tools/kubeadm/install-kubeadm/">docs</a></p>
+<blockquote>
+<p>if necessary enable and start <code>nftables.service</code> to configure the
+least permissive firewall settings</p>
+</blockquote>
+<h4 id="swap">Swap<a class="headerlink" href="#swap" title="Permanent link">&para;</a></h4>
+<ul>
+<li>If possible disable swap, <code>sudo swapoff -a</code></li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>- Identify configured swap devices and files with cat /proc/swaps.
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>- Turn off all swap devices and files with swapoff -a.
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>- Remove any matching reference found in /etc/fstab.
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>- Optional: Destroy any swap devices or files found in step 1 to prevent their reuse.
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>Due to your concerns about leaking sensitive information, you may wish to consider
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>performing some sort of secure wipe.
+</code></pre></div>
+<ul>
+<li>Otherwise tolerate swap :</li>
+<li><code>NodeSwap</code> must be enabled on the kubelet</li>
+<li><code>failSwapOn: false</code> in kubelet configuration</li>
+</ul>
+<p>❓ kubelet configuration</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="nt">memorySwap</span><span class="p">:</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="w">  </span><span class="nt">swapBehavior</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LimitedSwap</span>
+</code></pre></div>
+<h3 id="packages">packages<a class="headerlink" href="#packages" title="Permanent link">&para;</a></h3>
+<p>kubeadm, kubelet, kubectl</p>
+<ul>
+<li>kubelet and kubeadm version should match</li>
+<li>kubelet &lt;= any kube-apiserver</li>
+<li>kube-apiserver in HA cluster : 1 minor version skew max</li>
+<li>3 minor version skew max than kube-apiserver &lt; kube-proxy &lt;= kube-apiserver</li>
+</ul>
+<p>kubeadm creates etcd is in <code>/var/lib/etcd</code>. should be backed-up</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>update
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="c1"># apt-transport-https may be a dummy package; if so, you can skip that package</span>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>apt-transport-https<span class="w"> </span>ca-certificates<span class="w"> </span>curl<span class="w"> </span>gpg
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="c1"># If the directory `/etc/apt/keyrings` does not exist,</span>
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="c1"># it should be created before the curl command, read the note below.</span>
+<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="c1"># sudo mkdir -p -m 755 /etc/apt/keyrings</span>
+<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://pkgs.k8s.io/core:/stable:/v1.32/deb/Release.key<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>gpg<span class="w"> </span>--dearmor<span class="w"> </span>-o<span class="w"> </span>/etc/apt/keyrings/kubernetes-apt-keyring.gpg
+<a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a><span class="c1"># This overwrites any existing configuration in /etc/apt/sources.list.d/kubernetes.list</span>
+<a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.32/deb/ /&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/apt/sources.list.d/kubernetes.list
+<a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a>
+<a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>update
+<a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>kubelet<span class="w"> </span>kubeadm<span class="w"> </span>kubectl
+<a id="__codelineno-18-13" name="__codelineno-18-13" href="#__codelineno-18-13"></a>sudo<span class="w"> </span>apt-mark<span class="w"> </span>hold<span class="w"> </span>kubelet<span class="w"> </span>kubeadm<span class="w"> </span>kubectl
+<a id="__codelineno-18-14" name="__codelineno-18-14" href="#__codelineno-18-14"></a>
+<a id="__codelineno-18-15" name="__codelineno-18-15" href="#__codelineno-18-15"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>--now<span class="w"> </span>kubelet
+</code></pre></div>
+<h3 id="control-plane">control plane<a class="headerlink" href="#control-plane" title="Permanent link">&para;</a></h3>
+<p>To upgrade a single control-plane kubeadm cluster to high availability you should
+specify the <code>--control-plane-endpoint</code> to set the shared endpoint for
+all control-plane nodes.</p>
+<h3 id="kubeadm-init">kubeadm init<a class="headerlink" href="#kubeadm-init" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>kubeadm<span class="w"> </span>config<span class="w"> </span>print<span class="w"> </span>init-defaults
+</code></pre></div>
+<ul>
+<li>kubeadm configuration migration : <code>kubeadm config migrate</code>:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubeadm.k8s.io/v1beta4</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">InitConfiguration</span>
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="nt">bootstrapTokens</span><span class="p">:</span>
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">groups</span><span class="p">:</span>
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">system:bootstrappers:kubeadm:default-node-token</span>
+<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a><span class="w">  </span><span class="nt">token</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">abcdef.0123456789abcdef</span><span class="w">  </span><span class="c1"># 📢 replace this</span>
+<a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a><span class="w">  </span><span class="nt">ttl</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">24h0m0s</span>
+<a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a><span class="w">  </span><span class="nt">usages</span><span class="p">:</span>
+<a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">signing</span>
+<a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">authentication</span>
+<a id="__codelineno-20-11" name="__codelineno-20-11" href="#__codelineno-20-11"></a><span class="nt">localAPIEndpoint</span><span class="p">:</span>
+<a id="__codelineno-20-12" name="__codelineno-20-12" href="#__codelineno-20-12"></a><span class="w">  </span><span class="nt">advertiseAddress</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;IP-Node&gt;</span><span class="w">     </span><span class="c1"># 📢 change me</span>
+<a id="__codelineno-20-13" name="__codelineno-20-13" href="#__codelineno-20-13"></a><span class="w">  </span><span class="nt">bindPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">6443</span>
+<a id="__codelineno-20-14" name="__codelineno-20-14" href="#__codelineno-20-14"></a><span class="nt">nodeRegistration</span><span class="p">:</span>
+<a id="__codelineno-20-15" name="__codelineno-20-15" href="#__codelineno-20-15"></a><span class="w">  </span><span class="nt">criSocket</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unix:///var/run/containerd/containerd.sock</span>
+<a id="__codelineno-20-16" name="__codelineno-20-16" href="#__codelineno-20-16"></a><span class="w">  </span><span class="nt">imagePullPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IfNotPresent</span>
+<a id="__codelineno-20-17" name="__codelineno-20-17" href="#__codelineno-20-17"></a><span class="w">  </span><span class="nt">imagePullSerial</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<a id="__codelineno-20-18" name="__codelineno-20-18" href="#__codelineno-20-18"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;Node-Hostname&gt;</span><span class="w">           </span><span class="c1"># 📢 change me</span>
+<a id="__codelineno-20-19" name="__codelineno-20-19" href="#__codelineno-20-19"></a><span class="w">  </span><span class="nt">taints</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">null</span>
+<a id="__codelineno-20-20" name="__codelineno-20-20" href="#__codelineno-20-20"></a><span class="nt">timeouts</span><span class="p">:</span>
+<a id="__codelineno-20-21" name="__codelineno-20-21" href="#__codelineno-20-21"></a><span class="w">  </span><span class="nt">controlPlaneComponentHealthCheck</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4m0s</span>
+<a id="__codelineno-20-22" name="__codelineno-20-22" href="#__codelineno-20-22"></a><span class="w">  </span><span class="nt">discovery</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5m0s</span>
+<a id="__codelineno-20-23" name="__codelineno-20-23" href="#__codelineno-20-23"></a><span class="w">  </span><span class="nt">etcdAPICall</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2m0s</span>
+<a id="__codelineno-20-24" name="__codelineno-20-24" href="#__codelineno-20-24"></a><span class="w">  </span><span class="nt">kubeletHealthCheck</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4m0s</span>
+<a id="__codelineno-20-25" name="__codelineno-20-25" href="#__codelineno-20-25"></a><span class="w">  </span><span class="nt">kubernetesAPICall</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1m0s</span>
+<a id="__codelineno-20-26" name="__codelineno-20-26" href="#__codelineno-20-26"></a><span class="w">  </span><span class="nt">tlsBootstrap</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5m0s</span>
+<a id="__codelineno-20-27" name="__codelineno-20-27" href="#__codelineno-20-27"></a><span class="w">  </span><span class="nt">upgradeManifests</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5m0s</span>
+<a id="__codelineno-20-28" name="__codelineno-20-28" href="#__codelineno-20-28"></a><span class="nn">---</span>
+<a id="__codelineno-20-29" name="__codelineno-20-29" href="#__codelineno-20-29"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubeadm.k8s.io/v1beta4</span>
+<a id="__codelineno-20-30" name="__codelineno-20-30" href="#__codelineno-20-30"></a><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterConfiguration</span>
+<a id="__codelineno-20-31" name="__codelineno-20-31" href="#__codelineno-20-31"></a><span class="nt">caCertificateValidityPeriod</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">87600h0m0s</span>
+<a id="__codelineno-20-32" name="__codelineno-20-32" href="#__codelineno-20-32"></a><span class="nt">certificateValidityPeriod</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8760h0m0s</span>
+<a id="__codelineno-20-33" name="__codelineno-20-33" href="#__codelineno-20-33"></a><span class="nt">certificatesDir</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/etc/kubernetes/pki</span>
+<a id="__codelineno-20-34" name="__codelineno-20-34" href="#__codelineno-20-34"></a><span class="nt">clusterName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubernetes</span>
+<a id="__codelineno-20-35" name="__codelineno-20-35" href="#__codelineno-20-35"></a><span class="nt">controllerManager</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<a id="__codelineno-20-36" name="__codelineno-20-36" href="#__codelineno-20-36"></a><span class="nt">dns</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<a id="__codelineno-20-37" name="__codelineno-20-37" href="#__codelineno-20-37"></a><span class="nt">encryptionAlgorithm</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">RSA-2048</span>
+<a id="__codelineno-20-38" name="__codelineno-20-38" href="#__codelineno-20-38"></a><span class="nt">etcd</span><span class="p">:</span>
+<a id="__codelineno-20-39" name="__codelineno-20-39" href="#__codelineno-20-39"></a><span class="w">  </span><span class="nt">local</span><span class="p">:</span>
+<a id="__codelineno-20-40" name="__codelineno-20-40" href="#__codelineno-20-40"></a><span class="w">    </span><span class="nt">dataDir</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/var/lib/etcd</span>
+<a id="__codelineno-20-41" name="__codelineno-20-41" href="#__codelineno-20-41"></a><span class="nt">imageRepository</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">registry.k8s.io</span>
+<a id="__codelineno-20-42" name="__codelineno-20-42" href="#__codelineno-20-42"></a><span class="nt">kubernetesVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.32.0</span>
+<a id="__codelineno-20-43" name="__codelineno-20-43" href="#__codelineno-20-43"></a><span class="nt">controlPlaneEndpoint</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;&lt;KUBE-VIP-HOST:6443&quot;</span><span class="w"> </span><span class="c1"># 📢 change me</span>
+<a id="__codelineno-20-44" name="__codelineno-20-44" href="#__codelineno-20-44"></a><span class="nt">networking</span><span class="p">:</span>
+<a id="__codelineno-20-45" name="__codelineno-20-45" href="#__codelineno-20-45"></a><span class="w">  </span><span class="nt">dnsDomain</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cluster.local</span><span class="w">        </span><span class="c1"># 📢 change me</span>
+<a id="__codelineno-20-46" name="__codelineno-20-46" href="#__codelineno-20-46"></a><span class="w">  </span><span class="c1"># ~serviceSubnet: 10.96.0.0/12~</span>
+<a id="__codelineno-20-47" name="__codelineno-20-47" href="#__codelineno-20-47"></a><span class="w">  </span><span class="nt">serviceSubnet</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.116.0.0/16</span><span class="w">    </span><span class="c1"># 💡 update serviceSubnet and add podSubnet</span>
+<a id="__codelineno-20-48" name="__codelineno-20-48" href="#__codelineno-20-48"></a><span class="w">  </span><span class="nt">podSubnet</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10.117.0.0/16</span>
+<a id="__codelineno-20-49" name="__codelineno-20-49" href="#__codelineno-20-49"></a>
+<a id="__codelineno-20-50" name="__codelineno-20-50" href="#__codelineno-20-50"></a><span class="nt">proxy</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<a id="__codelineno-20-51" name="__codelineno-20-51" href="#__codelineno-20-51"></a><span class="nt">apiServer</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<a id="__codelineno-20-52" name="__codelineno-20-52" href="#__codelineno-20-52"></a><span class="nt">scheduler</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+</code></pre></div>
+<ul>
+<li>append the custom config for the kubelet configuration:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">KubeletConfiguration</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubelet.config.k8s.io/v1beta1</span>
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="nt">cgroupDriver</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">systemd</span>
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="nt">failSwapOn</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="nt">memorySwap</span><span class="p">:</span>
+<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a><span class="w">  </span><span class="nt">swapBehavior</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LimitedSwap</span>
+</code></pre></div>
+<ul>
+<li>upload this config <code>init-config-m1.yaml</code> into the 1st control plane node</li>
+</ul>
+<blockquote>
+<p>📢 the kube-vip cannot be used at 1st start, hence the ip must be temporarily
+assigned to the network interface  of the node :</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>sudo<span class="w"> </span>ip<span class="w"> </span>add<span class="w"> </span>&lt;KUBE-VIP-IP&gt;<span class="w"> </span>dev<span class="w"> </span>&lt;interface-name&gt;<span class="w"> </span><span class="c1"># eth0 for instance, do ip link to check</span>
+</code></pre></div>
+<ul>
+<li>then run init :</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>sudo<span class="w"> </span>kubeadm<span class="w"> </span>init<span class="w"> </span>--config<span class="w"> </span>init-config-m1.yaml<span class="w"> </span>--upload-certs
+</code></pre></div>
+<p>🔥 Troubleshoot:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>sudo<span class="w"> </span>kubeadm<span class="w"> </span>reset
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>stop<span class="w"> </span>kubelet.service
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="c1"># update the node setup (config, etc...)</span>
+<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="c1"># then run kubeadmn init command again ✈️</span>
+</code></pre></div>
+<h2 id="pki-certificates-and-requirements">PKI certificates and requirements<a class="headerlink" href="#pki-certificates-and-requirements" title="Permanent link">&para;</a></h2>
+<p><a href="https://kubernetes.io/docs/setup/best-practices/certificates/">best-practices</a>
+<a href="https://kubernetes.io/docs/tasks/administer-cluster/certificates/">gen certs</a></p>
+<p>Authentication over TLS : kubeadm can provide them auto, or generate your own certificates
+in order not to store them on the API server</p>
+<p>Certificate requirements:</p>
+<ul>
+<li>Server certificates:</li>
+<li>for the API server endpoint</li>
+<li>for the etcd server</li>
+<li>for each kubelet</li>
+<li>
+<p>optional for the front-proxy</p>
+</li>
+<li>
+<p>Client certificates:</p>
+</li>
+<li>for  each kubelet, to auth to the API server as a client of the k8s API</li>
+<li>for each API server, used to authenticate to etcd</li>
+<li>control manager to securely communicate with the API server</li>
+<li>scheduler to securely communicate with the API server</li>
+<li>for each node, for kube-proxy to auth to the API server</li>
+<li>optional for admins to auth to the API server</li>
+<li>
+<p>optional for the front-proxy</p>
+</li>
+<li>
+<p>storage :  <code>/etc/kubernetes/pki</code></p>
+</li>
+</ul>
+<h3 id="distributing-self-signed-certificates">Distributing Self-Signed Certificates<a class="headerlink" href="#distributing-self-signed-certificates" title="Permanent link">&para;</a></h3>
+<p>A client node may refuse to recognize a self-signed CA certificate as valid.
+For a non-production deployment, or for a deployment that runs behind a company firewall,
+you can distribute a self-signed CA certificate to all clients and refresh the local
+list for valid certificates.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>sudo<span class="w"> </span>cp<span class="w"> </span>ca.crt<span class="w"> </span>/usr/local/share/ca-certificates/kubernetes.crt
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>sudo<span class="w"> </span>update-ca-certificates
+</code></pre></div>
+<h2 id="nodes-dns">Nodes DNS<a class="headerlink" href="#nodes-dns" title="Permanent link">&para;</a></h2>
+<p>On arm64, NetworkManager service may be used to configure <code>/etc/resolv.conf</code> file.</p>
+<ul>
+<li>to manually configure the dns:</li>
+</ul>
+<p><code>sudo vim /etc/NetworkManager/NetworkManager.conf</code></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>[main]
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>dns=none
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>NetworkManager.service
+</code></pre></div>
+<ul>
+<li>now the file /etc/resolv.conf is empty, edit the file to your preferences (add a dns server)</li>
+<li>when rebooting networking, the <code>/etc/resolv.conf</code> file will stay as reconfigured</li>
+</ul>
+<h2 id="join">Join<a class="headerlink" href="#join" title="Permanent link">&para;</a></h2>
+<h3 id="worker-node">Worker node<a class="headerlink" href="#worker-node" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>kubeadm<span class="w"> </span>join<span class="w"> </span>&lt;CLUSTER-DOMAIN&gt;:6443<span class="w"> </span>--config<span class="w"> </span>&lt;join-config.yaml&gt;
+</code></pre></div>
+<ul>
+<li>example join config:</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kubeadm.k8s.io/v1beta4</span>
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="nt">caCertPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/etc/kubernetes/pki/ca.crt</span>
+<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a><span class="nt">discovery</span><span class="p">:</span>
+<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a><span class="w">  </span><span class="nt">bootstrapToken</span><span class="p">:</span>
+<a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a><span class="w">    </span><span class="nt">apiServerEndpoint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;CLUSTER-DOMAIN&gt;:6443</span><span class="w">   </span><span class="c1"># 📢 change me</span>
+<a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a><span class="w">    </span><span class="nt">caCertHashes</span><span class="p">:</span>
+<a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sha256:****</span><span class="w">                              </span><span class="c1"># 📢 change me</span>
+<a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a><span class="w">    </span><span class="nt">token</span><span class="p">:</span><span class="w"> </span><span class="err">****</span><span class="w">                                </span><span class="c1"># 📢 change me</span>
+<a id="__codelineno-29-9" name="__codelineno-29-9" href="#__codelineno-29-9"></a><span class="w">  </span><span class="nt">tlsBootstrapToken</span><span class="p">:</span><span class="w"> </span><span class="err">****</span><span class="w">                      </span><span class="c1"># 📢 change me</span>
+<a id="__codelineno-29-10" name="__codelineno-29-10" href="#__codelineno-29-10"></a><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">JoinConfiguration</span>
+<a id="__codelineno-29-11" name="__codelineno-29-11" href="#__codelineno-29-11"></a><span class="nt">nodeRegistration</span><span class="p">:</span>
+<a id="__codelineno-29-12" name="__codelineno-29-12" href="#__codelineno-29-12"></a><span class="w">  </span><span class="nt">criSocket</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unix:///var/run/containerd/containerd.sock</span>
+<a id="__codelineno-29-13" name="__codelineno-29-13" href="#__codelineno-29-13"></a><span class="w">  </span><span class="nt">imagePullPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">IfNotPresent</span>
+<a id="__codelineno-29-14" name="__codelineno-29-14" href="#__codelineno-29-14"></a><span class="w">  </span><span class="nt">imagePullSerial</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<a id="__codelineno-29-15" name="__codelineno-29-15" href="#__codelineno-29-15"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">&lt;NODE-FQDN&gt;</span><span class="w">                            </span><span class="c1"># 📢 change me</span>
+<a id="__codelineno-29-16" name="__codelineno-29-16" href="#__codelineno-29-16"></a><span class="w">  </span><span class="nt">taints</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">null</span>
+<a id="__codelineno-29-17" name="__codelineno-29-17" href="#__codelineno-29-17"></a><span class="nt">timeouts</span><span class="p">:</span>
+<a id="__codelineno-29-18" name="__codelineno-29-18" href="#__codelineno-29-18"></a><span class="w">  </span><span class="nt">controlPlaneComponentHealthCheck</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4m0s</span>
+<a id="__codelineno-29-19" name="__codelineno-29-19" href="#__codelineno-29-19"></a><span class="w">  </span><span class="nt">discovery</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5m0s</span>
+<a id="__codelineno-29-20" name="__codelineno-29-20" href="#__codelineno-29-20"></a><span class="w">  </span><span class="nt">etcdAPICall</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2m0s</span>
+<a id="__codelineno-29-21" name="__codelineno-29-21" href="#__codelineno-29-21"></a><span class="w">  </span><span class="nt">kubeletHealthCheck</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4m0s</span>
+<a id="__codelineno-29-22" name="__codelineno-29-22" href="#__codelineno-29-22"></a><span class="w">  </span><span class="nt">kubernetesAPICall</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1m0s</span>
+<a id="__codelineno-29-23" name="__codelineno-29-23" href="#__codelineno-29-23"></a><span class="w">  </span><span class="nt">tlsBootstrap</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5m0s</span>
+<a id="__codelineno-29-24" name="__codelineno-29-24" href="#__codelineno-29-24"></a><span class="w">  </span><span class="nt">upgradeManifests</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5m0s</span>
+</code></pre></div>
+<h2 id="kube-vip">Kube VIP<a class="headerlink" href="#kube-vip" title="Permanent link">&para;</a></h2>
+<p>Doc: <a href="../kube-vip/">kube-vip</a></p>
+<h2 id="calico">Calico<a class="headerlink" href="#calico" title="Permanent link">&para;</a></h2>
+<p>Doc: <a href="../calico/">calico</a></p>
+<p>🔥 Troubleshoot:</p>
+<ul>
+<li>check logs of the operator in namespace <code>tigera-operator</code></li>
+</ul>
+<h2 id="nodes-taint">Nodes taint<a class="headerlink" href="#nodes-taint" title="Permanent link">&para;</a></h2>
+<p>⚠️  Taints are mostly handled by kubernetes, so most of the time it should not
+be configured manually</p>
+<ul>
+<li>Nodes taints are handled by labels <code>node-role/kubernetes.io/...</code>, visible with a <code>kubectl describe nodes &lt;node-name&gt;</code></li>
+<li>check <code>kubectl taint --help</code>, particularly for possible effects (NoSchedule, NoExecute (evict running pods), PreferNoSchedule)</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="c1"># Add a taint, though set auto by the control plane</span>
+<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>kubectl<span class="w"> </span>taint<span class="w"> </span>nodes<span class="w"> </span>&lt;node-name&gt;<span class="w"> </span>node.kubernetes.io/not-ready:NoExecute
+<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a><span class="c1"># NOTE: this one tells to not schedule workload (application) on this node,</span>
+<a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a><span class="c1"># you must add a toleration on the pods manifest to allow it to be scheduled </span>
+<a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a><span class="c1"># on this control-plane node (typcaly for system pods)</span>
+<a id="__codelineno-30-6" name="__codelineno-30-6" href="#__codelineno-30-6"></a>kubectl<span class="w"> </span>taint<span class="w"> </span>nodes<span class="w"> </span>&lt;node-name&gt;<span class="w"> </span>node-role.kubernetes.io/control-plane:NoSchedule
+<a id="__codelineno-30-7" name="__codelineno-30-7" href="#__codelineno-30-7"></a>kubectl<span class="w"> </span>taint<span class="w"> </span>nodes<span class="w"> </span>&lt;node-name&gt;<span class="w"> </span>node.kubernetes.io/not-ready:NoSchedule
+<a id="__codelineno-30-8" name="__codelineno-30-8" href="#__codelineno-30-8"></a><span class="c1"># Remove a taint with &#39;-&#39; at the end</span>
+<a id="__codelineno-30-9" name="__codelineno-30-9" href="#__codelineno-30-9"></a>kubectl<span class="w"> </span>taint<span class="w"> </span>nodes<span class="w"> </span>&lt;node-name&gt;<span class="w"> </span>node-role.kubernetes.io/...:NoSchedule-
+</code></pre></div>
+<h2 id="node-notready">Node NotReady<a class="headerlink" href="#node-notready" title="Permanent link">&para;</a></h2>
+<ul>
+<li>describe pods, <code>Conditions Type</code> might indicate valuable information, such as error with the CRI =&gt; restart service containerd</li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/jfruteau" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/Julien-Fruteau" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/in/julien-fruteau-a4914671/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.top", "toc.integrate", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+        <script src="../../javascripts/katex.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/katex.min.js"></script>
+      
+        <script src="https://unpkg.com/katex@0/dist/contrib/auto-render.min.js"></script>
+      
+        <script src="../../js/katex.js"></script>
+      
+    
+  </body>
+</html>
