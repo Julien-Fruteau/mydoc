@@ -13,7 +13,7 @@ title: arrays data structure
 
 ## Linear Search
 
-```golang
+```go
 func linearSearch(haystack []int, needle int) bool {
   for _, v := range haystack {
     if v == needle {
@@ -28,7 +28,7 @@ func linearSearch(haystack []int, needle int) bool {
 
 ⚠️ hypothesis: the list must be sorted, ascending
 
-```golang
+```go
 func binarySearch(haystack []int, needle int) bool {
   lo := 0
   hi := len(haystack)
@@ -57,7 +57,7 @@ Example use case :
 
 - instead _linear search_ by jumping square_root of N (length): on the 1st hit, a ball is lost, but we start back from that hi index minus square_root(N)
 
-```golang
+```go
 func two_cristal_balls(breaks []bool) (v int) {
   jumpAmout := int(math.Sqrt(float64(len(breaks))))
   i := 0

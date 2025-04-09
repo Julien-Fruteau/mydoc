@@ -11,7 +11,7 @@ tags:
 
 ## Implementation
 
-```golang
+```go
 package main
 
 type Node[T any] struct {
